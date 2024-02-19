@@ -9,7 +9,7 @@ export default class Course {
         this.#nameOfCourse = name
     }
     getData(){
-        return this.#dataOfCourse = data
+        return this.#dataOfCourse
     } 
     setData(data){
         this.#dataOfCourse = data

@@ -18,8 +18,6 @@ for(let i = 0; i < 9;i++) {
     arrayOfCourses[i] = new Course() 
 }
 
-console.log(arrayOfCourses)
-
 let arrayOfDivs = []
 
 async function fetchDataJSON() {
@@ -31,16 +29,16 @@ fetchDataJSON().then(slides => {
     for(let i = 0; i < arrayOfCourses.length; i++){
             arrayOfCourses[i].setName(slides.data[i].title)
             arrayOfCourses[i].setData(slides.data[i].post)
-            arrayOfCourses[i].setClassIcon(slides.data[i].faclass)
+            arrayOfCourses[i].setIcon(slides.data[i].faclass)
 
             arrayOfDivs.push(`
                 <div class="col-sm-4 text-center serviceBox">
                     <span class="fa-stack fa-3x">
                         <i class="fa fa-circle fa-stack-2x icon-background1"></i>
                         ${
-                            (arrayOfCourses[i].getClassIcon() === "fa-mobile" || arrayOfCourses[i].getClassIcon() === "fa-database")
-                            ? `<i class="fa ${arrayOfCourses[i].getClassIcon()} fa-stack-1x fa-inverse"></i></span>`
-                            : `<i class="fab ${arrayOfCourses[i].getClassIcon()} fa-stack-1x fa-inverse"></i></span>`
+                            (arrayOfCourses[i].getIcon() === "fa-mobile" || arrayOfCourses[i].getIcon() === "fa-database")
+                            ? `<i class="fa ${arrayOfCourses[i].getIcon()} fa-stack-1x fa-inverse"></i></span>`
+                            : `<i class="fab ${arrayOfCourses[i].getIcon()} fa-stack-1x fa-inverse"></i></span>`
                         }
                     <h4 id="kurs${i + 1}a">${arrayOfCourses[i].getName()}</h4>
                     <p id="kurs${i + 1}b">${arrayOfCourses[i].getData()}</p>
@@ -48,5 +46,13 @@ fetchDataJSON().then(slides => {
         `
         )
     }
-    console.log(arrayOfCourses);
+    for(let i = 0; i < arrayOfDivs.length; i++){
+        if(i < 3){
+            slides1.innerHTML += arrayOfDivs[i]
+        } else if(i > 2 && i < 6){
+            slides2.innerHTML += arrayOfDivs[i]
+        } else {
+            slides3.innerHTML += arrayOfDivs[i]
+        }
+    }
 })
