@@ -4,7 +4,7 @@ export default class Person {
         this.lastName = last
         this.education = education
         this.age = age
-        this.eye = eye
+        this.eyeColor = eye
     }
     fullName(){
         return `${this.firstName} ${this.lastName}`
